@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Web_API.EntityModels
 {
-    public partial class Purchases
+    public partial class Purchase
     {
         public int PurchaseId { get; set; }
         public DateTime PurchaseDate { get; set; }
@@ -13,8 +13,8 @@ namespace Web_API.EntityModels
         public int? CustomerId { get; set; }
         public int? UserId { get; set; }
 
-        public Books Book { get; set; }
-        public Customers Customer { get; set; }
-        public Users User { get; set; }
+        public Book Book { get; set; }
+        public Customer Customer { get; set; }
+        public User User { get; set; }
     }
 }

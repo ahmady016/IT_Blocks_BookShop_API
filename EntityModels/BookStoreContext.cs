@@ -15,12 +15,12 @@ namespace Web_API.EntityModels
     {
     }
 
-    public virtual DbSet<Authors> Authors { get; set; }
-    public virtual DbSet<Books> Books { get; set; }
-    public virtual DbSet<Borrowings> Borrowings { get; set; }
-    public virtual DbSet<Customers> Customers { get; set; }
-    public virtual DbSet<Purchases> Purchases { get; set; }
-    public virtual DbSet<Users> Users { get; set; }
+    public virtual DbSet<Author> Authors { get; set; }
+    public virtual DbSet<Book> Books { get; set; }
+    public virtual DbSet<Borrowing> Borrowings { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<Purchase> Purchases { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -30,7 +30,7 @@ namespace Web_API.EntityModels
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<Authors>(entity =>
+      modelBuilder.Entity<Author>(entity =>
       {
         entity.HasKey(e => e.AuthorId);
 
@@ -56,7 +56,7 @@ namespace Web_API.EntityModels
                   .HasConstraintName("FK_Authors_Users");
       });
 
-      modelBuilder.Entity<Books>(entity =>
+      modelBuilder.Entity<Book>(entity =>
       {
         entity.HasKey(e => e.BookId);
 
@@ -111,7 +111,7 @@ namespace Web_API.EntityModels
                   .HasConstraintName("FK_Books_Users");
       });
 
-      modelBuilder.Entity<Borrowings>(entity =>
+      modelBuilder.Entity<Borrowing>(entity =>
       {
         entity.HasKey(e => e.BorrowingId);
 
@@ -150,7 +150,7 @@ namespace Web_API.EntityModels
                   .HasConstraintName("FK_Borrowings_Users");
       });
 
-      modelBuilder.Entity<Customers>(entity =>
+      modelBuilder.Entity<Customer>(entity =>
       {
         entity.HasKey(e => e.CustomerId);
 
@@ -176,7 +176,7 @@ namespace Web_API.EntityModels
                   .HasConstraintName("FK_Customers_Users");
       });
 
-      modelBuilder.Entity<Purchases>(entity =>
+      modelBuilder.Entity<Purchase>(entity =>
       {
         entity.HasKey(e => e.PurchaseId);
 
@@ -217,7 +217,7 @@ namespace Web_API.EntityModels
                   .HasConstraintName("FK_Purchases_Users");
       });
 
-      modelBuilder.Entity<Users>(entity =>
+      modelBuilder.Entity<User>(entity =>
       {
         entity.HasKey(e => e.UserId);
 

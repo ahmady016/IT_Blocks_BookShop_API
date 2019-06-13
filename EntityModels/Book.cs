@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Web_API.EntityModels
 {
-    public partial class Books
+    public partial class Book
     {
-        public Books()
+        public Book()
         {
-            Borrowings = new HashSet<Borrowings>();
-            Purchases = new HashSet<Purchases>();
+            Borrowings = new HashSet<Borrowing>();
+            Purchases = new HashSet<Purchase>();
         }
 
         public int BookId { get; set; }
@@ -23,8 +23,8 @@ namespace Web_API.EntityModels
         public decimal UnitPrice { get; set; }
         public int? UserId { get; set; }
 
-        public Users User { get; set; }
-        public ICollection<Borrowings> Borrowings { get; set; }
-        public ICollection<Purchases> Purchases { get; set; }
+        public User User { get; set; }
+        public ICollection<Borrowing> Borrowings { get; set; }
+        public ICollection<Purchase> Purchases { get; set; }
     }
 }
