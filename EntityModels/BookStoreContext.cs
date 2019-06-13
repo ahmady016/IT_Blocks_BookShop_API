@@ -25,7 +25,7 @@ namespace Web_API.EntityModels
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
       if (!optionsBuilder.IsConfigured)
-        optionsBuilder.UseSqlServer(Helpers.GetService<IConfiguration>().GetValue<string>("ConnectionStrings:BookStore"));
+        optionsBuilder.UseSqlServer(BaseHelpers.GetService<IConfiguration>().GetValue<string>("ConnectionStrings:BookStore"));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

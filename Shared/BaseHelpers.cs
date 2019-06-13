@@ -14,7 +14,7 @@ using Web_API.ViewModels;
 
 namespace Web_API
 {
-  public static class Helpers
+  public static class BaseHelpers
   {
     // get the DI [Dependency Injection Services]
     public static IServiceCollection DI { get; set; }

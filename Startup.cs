@@ -23,7 +23,7 @@ namespace Web_API
     public void ConfigureServices(IServiceCollection services)
     {
       // get the DI
-      Helpers.DI = services;
+      BaseHelpers.DI = services;
       // AddScoped configures settings to create new instance of this type per http request
       services.AddScoped<BaseService>();
       // Add automapper
@@ -44,7 +44,7 @@ namespace Web_API
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
-          options.TokenValidationParameters = Helpers.GetTokenValidationOptions(validateLifetime: true);
+          options.TokenValidationParameters = BaseHelpers.GetTokenValidationOptions(validateLifetime: true);
           options.Events = new JwtBearerEvents()
           {
             OnAuthenticationFailed = context =>
