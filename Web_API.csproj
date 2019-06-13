@@ -11,6 +11,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.3.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1"/>
+    <PackageReference Include="system.linq.dynamic.core" Version="1.0.8.3"/>
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.1.1"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0"/>
   </ItemGroup>
 
 </Project>
