@@ -3,18 +3,18 @@
 -- ------------------------------------------------------------
 -- USE master;
 -- GO
--- CREATE DATABASE Sales
+-- CREATE DATABASE IT_Blocks_BookStore
 -- ON
--- ( NAME = Sales_dat,
---     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\saledat.mdf',
---     SIZE = 10,
---     MAXSIZE = 50,
---     FILEGROWTH = 5 )
+-- ( NAME = BookStore_data,
+--     FILENAME = 'F:\4-Developer.Work\ASP Net Core 2.0\IT_Blocks_Book_Store\Web_API\db\BookStore.mdf',
+--     SIZE = 8MB,
+--     MAXSIZE = 100MB,
+--     FILEGROWTH = 5MB )
 -- LOG ON
--- ( NAME = Sales_log,
---     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\salelog.ldf',
---     SIZE = 5MB,
---     MAXSIZE = 25MB,
+-- ( NAME = BookStore_log,
+--     FILENAME = 'F:\4-Developer.Work\ASP Net Core 2.0\IT_Blocks_Book_Store\Web_API\db\BookStore.ldf',
+--     SIZE = 1MB,
+--     MAXSIZE = 50MB,
 --     FILEGROWTH = 5MB ) ;
 -- GO
 -- ------------------------------------------------------------
