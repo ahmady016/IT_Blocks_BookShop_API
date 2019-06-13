@@ -1,0 +1,151 @@
+-- ------------------------------------------------------------
+-- create Database
+-- ------------------------------------------------------------
+-- USE master;
+-- GO
+-- CREATE DATABASE Sales
+-- ON
+-- ( NAME = Sales_dat,
+--     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\saledat.mdf',
+--     SIZE = 10,
+--     MAXSIZE = 50,
+--     FILEGROWTH = 5 )
+-- LOG ON
+-- ( NAME = Sales_log,
+--     FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\salelog.ldf',
+--     SIZE = 5MB,
+--     MAXSIZE = 25MB,
+--     FILEGROWTH = 5MB ) ;
+-- GO
+-- ------------------------------------------------------------
+-- create Tables
+-- ------------------------------------------------------------
+-- USE IT_Blocks_BookStore;
+-- GO
+-- CREATE TABLE [dbo].[Authors] (
+--     [authorId] [int] PRIMARY KEY,
+--     [authorName] [nvarchar](100) NOT NULL,
+--     [birthDate] [smalldatetime] NULL
+-- )
+-- GO
+-- CREATE TABLE [dbo].[Books] (
+--     [bookId] [int] PRIMARY KEY,
+--     [title] [nvarchar](100) NOT NULL,
+--     [subtitle] [nvarchar](100) NOT NULL,
+--     [publishedDate] [smalldatetime] NOT NULL,
+--     [thumbnailURL] [varchar](250) NOT NULL,
+--     [pageCount] [smallint] NOT NULL,
+--     [description] [nvarchar](max) NULL,
+--     [authors] [varchar](max) NOT NULL,
+--     [inventoryCount] [smallint] NOT NULL DEFAULT(1),
+--     [unitPrice] [decimal](5,2) NOT NULL DEFAULT(10.00)
+-- )
+-- GO
+-- CREATE TABLE [dbo].[Users] (
+--     [userId] [int] PRIMARY KEY,
+--     [userName] [nvarchar](100) NOT NULL,
+--     [email] [varchar](max) NOT NULL,
+--     [passwordHash] [varchar](max) NOT NULL,
+--     [passwordSalt] [varchar](max) NOT NULL
+-- )
+-- GO
+-- CREATE TABLE [dbo].[Customers] (
+--     [customerId] [int] PRIMARY KEY,
+--     [customerName] [nvarchar](100) NOT NULL,
+--     [birthDate] [smalldatetime] NULL
+-- )
+-- GO
+-- CREATE TABLE [dbo].[Purchases] (
+--     [purchaseId] [int] PRIMARY KEY,
+--     [purchaseDate] [smalldatetime] NOT NULL,
+--     [quantity] [smallint] NOT NULL DEFAULT(1),
+--     [paidAmount] [int] NOT NULL,
+--     [bookId] [int] NULL,
+--     [customerId] [int] NULL,
+-- )
+-- GO
+-- CREATE TABLE [dbo].[Borrowings] (
+--     [borrowingId] [int] PRIMARY KEY,
+--     [borrowingStartDate] [smalldatetime] NOT NULL,
+--     [borrowingEndDate] [smalldatetime] NOT NULL,
+--     [bookId] [int] NULL,
+--     [customerId] [int] NULL
+-- )
+-- GO
+-- ------------------------------------------------------------
+-- Add Tables Relations
+-- ------------------------------------------------------------
+-- Users with All other tables
+------------------------------
+-- ALTER TABLE [dbo].[Authors] ADD [userId] [int] NULL
+-- ALTER TABLE [dbo].[Books] ADD [userId] [int] NULL
+-- ALTER TABLE [dbo].[Customers] ADD [userId] [int] NULL
+-- ALTER TABLE [dbo].[Purchases] ADD [userId] [int] NULL
+-- ALTER TABLE [dbo].[Borrowings] ADD [userId] [int] NULL
+
+-- ALTER TABLE [dbo].[Authors]
+-- ADD CONSTRAINT [FK_Authors_Users] FOREIGN KEY([userId])
+-- REFERENCES [dbo].[Users] ([userId])
+-- ON UPDATE CASCADE
+-- ON DELETE SET NULL
+-- GO
+
+-- ALTER TABLE [dbo].[Books]
+-- ADD CONSTRAINT [FK_Books_Users] FOREIGN KEY([userId])
+-- REFERENCES [dbo].[Users] ([userId])
+-- ON UPDATE CASCADE
+-- ON DELETE SET NULL
+-- GO
+
+-- ALTER TABLE [dbo].[Customers]
+-- ADD CONSTRAINT [FK_Customers_Users] FOREIGN KEY([userId])
+-- REFERENCES [dbo].[Users] ([userId])
+-- ON UPDATE CASCADE
+-- ON DELETE SET NULL
+-- GO
+
+-- ALTER TABLE [dbo].[Purchases]
+-- ADD CONSTRAINT [FK_Purchases_Users] FOREIGN KEY([userId])
+-- REFERENCES [dbo].[Users] ([userId])
+-- ON UPDATE CASCADE
+-- ON DELETE SET NULL
+-- GO
+
+-- ALTER TABLE [dbo].[Borrowings]
+-- ADD CONSTRAINT [FK_Borrowings_Users] FOREIGN KEY([userId])
+-- REFERENCES [dbo].[Users] ([userId])
+-- ON UPDATE CASCADE
+-- ON DELETE SET NULL
+-- GO
+
+-- Purchases with [Books - Customers]
+-------------------------------------
+-- ALTER TABLE [dbo].[Purchases]
+-- ADD CONSTRAINT [FK_Purchases_Books] FOREIGN KEY([bookId])
+-- REFERENCES [dbo].[Books] ([bookId])
+-- ON UPDATE NO ACTION
+-- ON DELETE NO ACTION
+-- GO
+
+-- ALTER TABLE [dbo].[Purchases]
+-- ADD CONSTRAINT [FK_Purchases_Customers] FOREIGN KEY([customerId])
+-- REFERENCES [dbo].[Customers] ([customerId])
+-- ON UPDATE NO ACTION
+-- ON DELETE NO ACTION
+-- GO
+
+-- Borrowings with [Books - Customers]
+-------------------------------------
+-- ALTER TABLE [dbo].[Borrowings]
+-- ADD CONSTRAINT [FK_Borrowings_Books] FOREIGN KEY([bookId])
+-- REFERENCES [dbo].[Books] ([bookId])
+-- ON UPDATE NO ACTION
+-- ON DELETE NO ACTION
+-- GO
+
+-- ALTER TABLE [dbo].[Borrowings]
+-- ADD CONSTRAINT [FK_Borrowings_Customers] FOREIGN KEY([customerId])
+-- REFERENCES [dbo].[Customers] ([customerId])
+-- ON UPDATE NO ACTION
+-- ON DELETE NO ACTION
+-- GO
