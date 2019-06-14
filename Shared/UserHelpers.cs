@@ -10,11 +10,25 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Web_API.ViewModels;
+using Web_API.EntityModels;
 
 namespace Web_API
 {
   public static class UserHelpers
   {
+    public static User ToUser(SignUp signUp)
+    {
+      // generate salt and hash
+      string salt = UserHelpers.GetSecuredRandStr();
+      string hash = UserHelpers.Hashing(signUp.UserPassword, salt);
+      return new User()
+      {
+        UserName = signUp.UserName,
+        Email = signUp.Email,
+        PasswordSalt = salt,
+        PasswordHash = hash
+      };
+    }
     // get SecretKey from appsettings.json file
     public static SymmetricSecurityKey GetSecretKey()
     {
@@ -121,7 +135,7 @@ namespace Web_API
       var props = vUser.GetProperties();
       // loop through vUser props and set each prop value with the corresponding claim value
       foreach (var prop in props)
-        vUser.SetValue(prop.Name,claims.FirstOrDefault(c => c.Type == prop.Name).Value);
+        vUser.SetValue(prop.Name, claims.FirstOrDefault(c => c.Type == prop.Name).Value);
       // finally return the fulfilled vUser object
       return vUser;
     }

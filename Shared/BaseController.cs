@@ -47,12 +47,10 @@ namespace Web_API
           else if (res == -2)
             return BadRequest(new Error() { Message = "Item has already been Logically deleted before" });
           _SetDeleteResult(entity, res, "logical");
-          // await _hubContext.Clients.Group(_tableName).SendAsync(_clientMethod, "Delete", _deleteResult);
           return Ok(_deleteResult);
         case "physical":
           res = await Task.Run(() => _service.Delete(entity));
           _SetDeleteResult(entity, res, "physical");
-          // await _hubContext.Clients.Group(_tableName).SendAsync(_clientMethod, "Delete", _deleteResult);
           return Ok(_deleteResult);
         default:
           return BadRequest(new Error() { Message = "Unknown Delete Type" });
