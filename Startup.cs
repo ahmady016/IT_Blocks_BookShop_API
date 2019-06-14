@@ -44,7 +44,7 @@ namespace Web_API
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
-          options.TokenValidationParameters = BaseHelpers.GetTokenValidationOptions(validateLifetime: true);
+          options.TokenValidationParameters = UserHelpers.GetTokenValidationOptions(validateLifetime: true);
           options.Events = new JwtBearerEvents()
           {
             OnAuthenticationFailed = context =>

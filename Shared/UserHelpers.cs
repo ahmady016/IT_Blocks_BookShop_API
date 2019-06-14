@@ -57,7 +57,7 @@ namespace Web_API
       }
     }
     // A Function to return new TokenValidationParameters object
-    private static TokenValidationParameters GetTokenValidationOptions(bool validateLifetime)
+    public static TokenValidationParameters GetTokenValidationOptions(bool validateLifetime)
     {
       var config = BaseHelpers.GetService<IConfiguration>();
       return new TokenValidationParameters
