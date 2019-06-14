@@ -9,6 +9,7 @@ namespace Web_API.EntityModels
         {
             Borrowings = new HashSet<Borrowing>();
             Purchases = new HashSet<Purchase>();
+            IsDeleted = false;
         }
 
         public int BookId { get; set; }
@@ -22,6 +23,7 @@ namespace Web_API.EntityModels
         public short InventoryCount { get; set; }
         public decimal UnitPrice { get; set; }
         public int? UserId { get; set; }
+        public bool IsDeleted { get; set; }
 
         public User User { get; set; }
         public ICollection<Borrowing> Borrowings { get; set; }

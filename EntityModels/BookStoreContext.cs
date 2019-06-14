@@ -48,6 +48,7 @@ namespace Web_API.EntityModels
                   .HasColumnType("smalldatetime");
 
         entity.Property(e => e.UserId).HasColumnName("userId");
+        entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
         entity.HasOne(d => d.User)
                   .WithMany(p => p.Authors)
@@ -103,6 +104,7 @@ namespace Web_API.EntityModels
                   .HasDefaultValueSql("((10.00))");
 
         entity.Property(e => e.UserId).HasColumnName("userId");
+        entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
         entity.HasOne(d => d.User)
                   .WithMany(p => p.Books)
@@ -132,6 +134,7 @@ namespace Web_API.EntityModels
         entity.Property(e => e.CustomerId).HasColumnName("customerId");
 
         entity.Property(e => e.UserId).HasColumnName("userId");
+        entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
         entity.HasOne(d => d.Book)
                   .WithMany(p => p.Borrowings)
@@ -168,6 +171,7 @@ namespace Web_API.EntityModels
                   .HasMaxLength(100);
 
         entity.Property(e => e.UserId).HasColumnName("userId");
+        entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
         entity.HasOne(d => d.User)
                   .WithMany(p => p.Customers)
@@ -199,6 +203,7 @@ namespace Web_API.EntityModels
                   .HasDefaultValueSql("((1))");
 
         entity.Property(e => e.UserId).HasColumnName("userId");
+        entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
 
         entity.HasOne(d => d.Book)
                   .WithMany(p => p.Purchases)
@@ -244,6 +249,8 @@ namespace Web_API.EntityModels
                   .IsRequired()
                   .HasColumnName("userName")
                   .HasMaxLength(100);
+
+        entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
       });
     }
   }

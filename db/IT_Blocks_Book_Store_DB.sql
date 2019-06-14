@@ -149,3 +149,12 @@
 -- ON UPDATE NO ACTION
 -- ON DELETE NO ACTION
 -- GO
+-- ------------------------------------------------------------
+-- Add Soft Delete to each table
+-- ------------------------------------------------------------
+-- ALTER TABLE [dbo].[Users] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
+-- ALTER TABLE [dbo].[Authors] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
+-- ALTER TABLE [dbo].[Books] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
+-- ALTER TABLE [dbo].[Customers] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
+-- ALTER TABLE [dbo].[Purchases] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
+-- ALTER TABLE [dbo].[Borrowings] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
