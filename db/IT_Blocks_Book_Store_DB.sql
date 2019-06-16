@@ -23,13 +23,13 @@
 -- USE IT_Blocks_BookStore;
 -- GO
 -- CREATE TABLE [dbo].[Authors] (
---     [authorId] [int] PRIMARY KEY,
+--     [authorId] [int] IDENTITY(1,1) PRIMARY KEY,
 --     [authorName] [nvarchar](100) NOT NULL,
 --     [birthDate] [smalldatetime] NULL
 -- )
 -- GO
 -- CREATE TABLE [dbo].[Books] (
---     [bookId] [int] PRIMARY KEY,
+--     [bookId] [int] IDENTITY(1,1) PRIMARY KEY,
 --     [title] [nvarchar](100) NOT NULL,
 --     [subtitle] [nvarchar](100) NOT NULL,
 --     [publishedDate] [smalldatetime] NOT NULL,
@@ -42,34 +42,38 @@
 -- )
 -- GO
 -- CREATE TABLE [dbo].[Users] (
---     [userId] [int] PRIMARY KEY,
+--     [userId] [int] IDENTITY(1,1) PRIMARY KEY,
 --     [userName] [nvarchar](100) NOT NULL,
+--     [address] [nvarchar](max) NOT NULL,
+--     [mobile] [char](11) NOT NULL,
+--     [birthDate] [smalldatetime] NOT NULL,
+--     [gender] [bit] NOT NULL DEFAULT(1),
 --     [email] [varchar](max) NOT NULL,
 --     [passwordHash] [varchar](max) NOT NULL,
 --     [passwordSalt] [varchar](max) NOT NULL
 -- )
 -- GO
 -- CREATE TABLE [dbo].[Customers] (
---     [customerId] [int] PRIMARY KEY,
+--     [customerId] [char](14) PRIMARY KEY,
 --     [customerName] [nvarchar](100) NOT NULL,
 --     [birthDate] [smalldatetime] NULL
 -- )
 -- GO
 -- CREATE TABLE [dbo].[Purchases] (
---     [purchaseId] [int] PRIMARY KEY,
+--     [purchaseId] [int] IDENTITY(1,1) PRIMARY KEY,
 --     [purchaseDate] [smalldatetime] NOT NULL,
 --     [quantity] [smallint] NOT NULL DEFAULT(1),
 --     [paidAmount] [int] NOT NULL,
 --     [bookId] [int] NULL,
---     [customerId] [int] NULL,
+--     [customerId] [char](14) NULL,
 -- )
 -- GO
 -- CREATE TABLE [dbo].[Borrowings] (
---     [borrowingId] [int] PRIMARY KEY,
+--     [borrowingId] [int] IDENTITY(1,1) PRIMARY KEY,
 --     [borrowingStartDate] [smalldatetime] NOT NULL,
 --     [borrowingEndDate] [smalldatetime] NOT NULL,
 --     [bookId] [int] NULL,
---     [customerId] [int] NULL
+--     [customerId] [char](14) NULL
 -- )
 -- GO
 -- ------------------------------------------------------------
