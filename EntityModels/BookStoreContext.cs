@@ -34,9 +34,7 @@ namespace Web_API.EntityModels
       {
         entity.HasKey(e => e.AuthorId);
 
-        entity.Property(e => e.AuthorId)
-                  .HasColumnName("authorId")
-                  .ValueGeneratedNever();
+        entity.Property(e => e.AuthorId).HasColumnName("authorId");
 
         entity.Property(e => e.AuthorName)
                   .IsRequired()
@@ -61,9 +59,7 @@ namespace Web_API.EntityModels
       {
         entity.HasKey(e => e.BookId);
 
-        entity.Property(e => e.BookId)
-                  .HasColumnName("bookId")
-                  .ValueGeneratedNever();
+        entity.Property(e => e.BookId).HasColumnName("bookId");
 
         entity.Property(e => e.Authors)
                   .IsRequired()
@@ -117,9 +113,7 @@ namespace Web_API.EntityModels
       {
         entity.HasKey(e => e.BorrowingId);
 
-        entity.Property(e => e.BorrowingId)
-                  .HasColumnName("borrowingId")
-                  .ValueGeneratedNever();
+        entity.Property(e => e.BorrowingId).HasColumnName("borrowingId");
 
         entity.Property(e => e.BookId).HasColumnName("bookId");
 
@@ -159,6 +153,7 @@ namespace Web_API.EntityModels
 
         entity.Property(e => e.CustomerId)
                   .HasColumnName("customerId")
+                  .HasColumnType("char(14)")
                   .ValueGeneratedNever();
 
         entity.Property(e => e.BirthDate)
@@ -184,9 +179,7 @@ namespace Web_API.EntityModels
       {
         entity.HasKey(e => e.PurchaseId);
 
-        entity.Property(e => e.PurchaseId)
-                  .HasColumnName("purchaseId")
-                  .ValueGeneratedNever();
+        entity.Property(e => e.PurchaseId).HasColumnName("purchaseId");
 
         entity.Property(e => e.BookId).HasColumnName("bookId");
 
@@ -226,9 +219,7 @@ namespace Web_API.EntityModels
       {
         entity.HasKey(e => e.UserId);
 
-        entity.Property(e => e.UserId)
-                  .HasColumnName("userId")
-                  .ValueGeneratedNever();
+        entity.Property(e => e.UserId).HasColumnName("userId");
 
         entity.Property(e => e.Email)
                   .IsRequired()
