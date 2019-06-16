@@ -9,7 +9,7 @@ namespace Web_API.ViewModels
     public string UserName { get; set; }
     [Required]
     [MinLength(6)]
-    public string UserPassword { get; set; }
+    public string Password { get; set; }
     [Required]
     [Range(8, 255)]
     public string Email { get; set; }

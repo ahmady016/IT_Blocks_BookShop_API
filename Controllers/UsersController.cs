@@ -47,7 +47,7 @@ namespace Web_API
 
     [AllowAnonymous]
     [HttpPost("sign-up")]
-    public IActionResult SignUp([FromBody]SignUp signUp)
+    public IActionResult SignUp(SignUp signUp)
     {
       // (1) Generate password Hash and salt
       // (_) Mapping from SignUp [View Model] to User [Entity Model]
@@ -70,7 +70,7 @@ namespace Web_API
     {
       // (1) Get User by his Credentials [userId - userPassword]
       // and validate the userPassword against Passwordhash
-      user = _service.GetOne<User>(u => u.Email == signIn.Email && UserHelpers.ValidateHash(signIn.UserPassword, u.PasswordSalt, u.PasswordHash));
+      user = _service.GetOne<User>(u => u.Email == signIn.Email && UserHelpers.ValidateHash(signIn.Password, u.PasswordSalt, u.PasswordHash));
       // (2) if User doesn't exist return badRequest
       if (user == null)
         return BadRequest(new Error() { Message = "Invalid User." });

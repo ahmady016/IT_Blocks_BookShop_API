@@ -20,7 +20,7 @@ namespace Web_API
     {
       // generate salt and hash
       string salt = UserHelpers.GetSecuredRandStr();
-      string hash = UserHelpers.Hashing(signUp.UserPassword, salt);
+      string hash = UserHelpers.Hashing(signUp.Password, salt);
       return new User()
       {
         UserName = signUp.UserName,

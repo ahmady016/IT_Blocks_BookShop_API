@@ -9,6 +9,6 @@ namespace Web_API.ViewModels
         public string Email { get; set; }
         [Required]
         [MinLength(6)]
-        public string UserPassword { get; set; }
+        public string Password { get; set; }
     }
 }
