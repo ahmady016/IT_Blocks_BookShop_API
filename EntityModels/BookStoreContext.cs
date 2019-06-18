@@ -6,12 +6,7 @@ namespace Web_API.EntityModels
 {
   public partial class BookStoreContext : DbContext
   {
-    public BookStoreContext()
-    {
-    }
-
     public BookStoreContext(DbContextOptions<BookStoreContext> options)
-        : base(options)
     {
     }
 
@@ -221,6 +216,27 @@ namespace Web_API.EntityModels
 
         entity.Property(e => e.UserId).HasColumnName("userId");
 
+        entity.Property(e => e.UserName)
+                  .IsRequired()
+                  .HasColumnName("userName")
+                  .HasMaxLength(100);
+
+        entity.Property(e => e.Address)
+                  .IsRequired()
+                  .HasColumnName("address");
+
+        entity.Property(e => e.Mobile)
+                  .IsRequired()
+                  .HasColumnName("mobile");
+
+        entity.Property(e => e.BirthDate)
+                  .IsRequired()
+                  .HasColumnName("birthDate");
+
+        entity.Property(e => e.Gender)
+                  .IsRequired()
+                  .HasColumnName("gender");
+
         entity.Property(e => e.Email)
                   .IsRequired()
                   .HasColumnName("email")
@@ -235,11 +251,6 @@ namespace Web_API.EntityModels
                   .IsRequired()
                   .HasColumnName("passwordSalt")
                   .IsUnicode(false);
-
-        entity.Property(e => e.UserName)
-                  .IsRequired()
-                  .HasColumnName("userName")
-                  .HasMaxLength(100);
 
         entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
       });
