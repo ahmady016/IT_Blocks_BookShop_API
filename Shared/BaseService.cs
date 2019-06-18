@@ -623,7 +623,7 @@ namespace Web_API
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public int DeleteLogical<TEntity>(TEntity entity)
+    public int DeleteLogical<TEntity>(TEntity entity) where TEntity : class
     {
       string propName = "IsDeleted";
       if (entity.GetProperty(propName) == null)
@@ -634,6 +634,7 @@ namespace Web_API
       if (value == true)
         return -2;
       entity.SetValue("IsDeleted", true);
+      SetState(entity, "Modified");
       return _db.SaveChanges();
     }
     //takes entity to be deleted physically from DB, get the 'isDeleted' property , if exists delete the whole row from table
