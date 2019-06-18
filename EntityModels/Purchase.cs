@@ -14,7 +14,7 @@ namespace Web_API.EntityModels
     public short Quantity { get; set; }
     public int PaidAmount { get; set; }
     public int? BookId { get; set; }
-    public int? CustomerId { get; set; }
+    public string CustomerId { get; set; }
     public int? UserId { get; set; }
     public bool IsDeleted { get; set; }
 

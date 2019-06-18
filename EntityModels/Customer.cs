@@ -12,7 +12,7 @@ namespace Web_API.EntityModels
       IsDeleted = false;
     }
 
-    public int CustomerId { get; set; }
+    public string CustomerId { get; set; }
     public string CustomerName { get; set; }
     public DateTime? BirthDate { get; set; }
     public int? UserId { get; set; }

@@ -13,7 +13,7 @@ namespace Web_API.EntityModels
     public DateTime BorrowingStartDate { get; set; }
     public DateTime BorrowingEndDate { get; set; }
     public int? BookId { get; set; }
-    public int? CustomerId { get; set; }
+    public string CustomerId { get; set; }
     public int? UserId { get; set; }
     public bool IsDeleted { get; set; }
 

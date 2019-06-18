@@ -5,7 +5,7 @@ namespace Web_API.ViewModels
     public class SignIn
     {
         [Required]
-        [Range(8, 255)]
+        [MinLength(6)]
         public string Email { get; set; }
         [Required]
         [MinLength(6)]
