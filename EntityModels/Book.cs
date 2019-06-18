@@ -9,6 +9,7 @@ namespace Web_API.EntityModels
         {
             Borrowings = new HashSet<Borrowing>();
             Purchases = new HashSet<Purchase>();
+            Authors = "0";
             IsDeleted = false;
         }
 

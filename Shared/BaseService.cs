@@ -53,7 +53,7 @@ namespace Web_API
       // and finally return the aggregate sqlSet statement
       return settersList.Aggregate("", (sqlSet, keyValue) =>
       {
-        if(settersList.First() == keyValue)
+        if (settersList.First() == keyValue)
           sqlSet += _BuildSetKeyVal<TEntity>(keyValue);
         else
           sqlSet += $", {_BuildSetKeyVal<TEntity>(keyValue)}";
@@ -157,7 +157,7 @@ namespace Web_API
       string[] filtersArr = filters.SplitAndRemoveEmpty(',');
       // list to hold every filter as an array with 3 item
       List<string[]> filtersList = filtersArr.Select(item => item.SplitAndRemoveEmpty('|'))
-                                             .ToList();
+                                      .ToList();
       // build the condition of every filter one by one
       // and finally return the aggregate sqlWhere statement
       return filtersList.Aggregate("", (sqlWhere, filter) =>
@@ -572,7 +572,7 @@ namespace Web_API
     }
     public object GetView(Type type)
     {
-      return  _db.GetType()
+      return _db.GetType()
                 .GetMethod("Query")
                 .MakeGenericMethod(type)
                 .Invoke(_db, new object[] { });

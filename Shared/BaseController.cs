@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace Web_API
 {
-  // [Authorize]
+  [Authorize]
   [ApiController]
   [Route("[controller]")]
   public class BaseController<TEntity, TKey, TView> : ControllerBase
@@ -159,7 +159,7 @@ namespace Web_API
     /// <param name="pageSize">Number of items per page</param>
     /// <param name="pageNumber">Number of page to get </param>
     /// <returns></returns>
-    [HttpGet("")]
+    [HttpGet("query")]
     public IActionResult Query([FromQuery] string filters,
                                 [FromQuery] string fields,
                                 [FromQuery] string orderBy,
