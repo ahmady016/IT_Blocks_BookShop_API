@@ -20,6 +20,11 @@ namespace Web_API.EntityModels
     public string Email { get; set; }
     public string PasswordHash { get; set; }
     public string PasswordSalt { get; set; }
+
+    public string Address { get; set; }
+    public string Mobile { get; set; }
+    public DateTime BirthDate { get; set; }
+    public bool Gender { get; set; }
     public bool IsDeleted { get; set; }
 
     public ICollection<Author> Authors { get; set; }

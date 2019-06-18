@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Web_API.ViewModels
@@ -11,7 +12,18 @@ namespace Web_API.ViewModels
     [MinLength(6)]
     public string Password { get; set; }
     [Required]
-    [Range(8, 255)]
+    [MinLength(6)]
     public string Email { get; set; }
+    [Required]
+    [MinLength(6)]
+    public string Address { get; set; }
+    [Required]
+    [MinLength(11)]
+    [MaxLength(11)]
+    public string Mobile { get; set; }
+    [Required]
+    public DateTime BirthDate { get; set; }
+    [Required]
+    public bool Gender { get; set; }
   }
 }

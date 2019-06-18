@@ -25,6 +25,10 @@ namespace Web_API
       {
         UserName = signUp.UserName,
         Email = signUp.Email,
+        Address = signUp.Address,
+        Mobile = signUp.Mobile,
+        BirthDate = signUp.BirthDate,
+        Gender = signUp.Gender,
         PasswordSalt = salt,
         PasswordHash = hash
       };
