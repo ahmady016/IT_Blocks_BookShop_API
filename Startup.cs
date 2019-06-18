@@ -67,7 +67,7 @@ namespace Web_API
           };
         });
       // configure MVC options
-      services.AddMvc()
+      services.AddMvc(config => config.Filters.Add(typeof(ApiExceptionFilterAttribute)))
         .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
         .AddJsonOptions(options =>
         {

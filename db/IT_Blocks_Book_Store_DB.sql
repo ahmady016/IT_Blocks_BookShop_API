@@ -163,4 +163,6 @@
 -- ALTER TABLE [dbo].[Purchases] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
 -- ALTER TABLE [dbo].[Borrowings] ADD [isDeleted] [bit] NOT NULL DEFAULT(0)
 
--- SELECT * FROM Users
+-- SELECT * FROM Books
+-- SELECT * FROM Purchases
+-- SELECT * FROM Borrowings
