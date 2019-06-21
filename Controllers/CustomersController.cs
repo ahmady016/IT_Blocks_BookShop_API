@@ -3,7 +3,7 @@ using Web_API.EntityModels;
 
 namespace Web_API
 {
-  public class CustomersController : BaseController<Customer, int, Customer>
+  public class CustomersController : BaseController<Customer, string, Customer>
   {
     private readonly BaseService _service;
     private readonly IMapper _mapper;
